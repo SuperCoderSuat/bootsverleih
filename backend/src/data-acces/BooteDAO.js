@@ -1,4 +1,4 @@
-import { ObjectID } from "mongodb";
+import { ObjectId } from "mongodb";
 import { getDB } from "./getDB.js";
 import { createBoat } from "../domain/index.js";
 

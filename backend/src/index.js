@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import morgan from "morgan";
 import dotenv from "dotenv";
+import { bootRouter } from "./routes/index.js";
 
 // Laden von Umgebungsvariablen aus der .env-Datei
 dotenv.config();
@@ -16,6 +17,6 @@ app.use(cors());
 app.use(morgan("dev"));
 
 // routes
-app.get("/", (req, res) => res.send("it works :)"));
+app.get("/", bootRouter.default);
 
 app.listen(PORT, () => console.log("Server listening on port", PORT));
