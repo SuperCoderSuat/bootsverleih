@@ -38,3 +38,28 @@ export async function deleteBoatById(bootId) {
     if (!acknowledged) return null;
     return createBoat(boot);
 }
+
+async function getBoatById(bootId) {
+    const db = await getDb();
+    const boat = await db
+        .collection("boote")
+        .findOne({ _id: ObjectId.createFromHexString(bootId) });
+    return boat;
+}
+
+export async function findByIdAndUpdate(bootId, updatedDetails) {
+    const db = await getDb();
+
+    const result = await db
+        .collection("boote")
+        .updateOne(
+            { _id: ObjectId.createFromHexString(bootId) },
+            { $set: updatedDetails }
+        );
+
+    if (result.modifiedCount === 1) {
+        return getBoatById(bootId);
+    } else {
+        return null;
+    }
+}

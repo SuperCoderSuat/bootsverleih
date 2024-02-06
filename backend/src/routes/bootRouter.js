@@ -48,6 +48,25 @@ bootRouter.post("/", express.json(), async function addNewBoat(req, res) {
     }
 });
 
+bootRouter.patch("/:bootId", express.json(), async function editBoat(req, res) {
+    try {
+        const bootId = req.params.bootId;
+        const updatedDetails = req.body;
+
+        // You may want to add validation here to ensure `updatedDetails` is not empty
+
+        const result = await BootService.updateBoat(bootId, updatedDetails);
+        res.json({ success: true, result });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            success: false,
+            err,
+            message: err.message || "could not update boat",
+        });
+    }
+});
+
 bootRouter.delete("/:bootId", async function deleteBoatById(req, res) {
     try {
         const bootId = req.params.bootId;
