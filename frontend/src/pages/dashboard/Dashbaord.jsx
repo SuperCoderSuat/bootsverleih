@@ -1,26 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from "react";
+import "./Dashboard.scss";
+import fetchData from "../../api/fetchBoote";
 
 const Dashboard = () => {
-  const [data, setData] = useState();
-
   useEffect(() => {
-    const fetchData = async () => {
+    const getData = async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/v1/boote');
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        // Hier kannst du mit den erhaltenen Daten arbeiten
-        setData(data);
-        console.log(data); // console.log innerhalb des useEffect
+        const data = await fetchData(); // fetchData aufrufen und auf die Daten warten
+        console.log(data); // Hier kannst du mit den erhaltenen Daten arbeiten
       } catch (error) {
-        console.error('Fetch fehlgeschlagen:', error);
+        console.error('Fehler beim Abrufen der Daten:', error);
       }
     };
 
-    fetchData();
-  }, []); // Leeres Array als zweites Argument, damit der Effekt nur einmalig beim Mounten der Komponente ausgeführt wird
+    getData(); // getData aufrufen
+  }, []);
 
   return <div></div>;
 };

@@ -7,10 +7,10 @@ const fetchData = async () => {
       const data = await response.json();
       // Hier kannst du mit den erhaltenen Daten arbeiten
       console.log(data);
+      return data; // Daten zurückgeben
     } catch (error) {
       console.error('Fetch fehlgeschlagen:', error);
     }
-  }
+}
 
 export default fetchData;
-  
