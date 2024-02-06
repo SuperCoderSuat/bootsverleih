@@ -7,7 +7,8 @@ export async function getAllBoats() {
 
 function asBoatListItem(boot) {
     return {
-        id: boot.id,
+        id: boot._id,
+        baujahr: boot.baujahr,
         seriennummer: boot.seriennummer,
         material: boot.material,
         bootsart: boot.bootsart,

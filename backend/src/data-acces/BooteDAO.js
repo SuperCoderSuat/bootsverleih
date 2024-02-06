@@ -1,9 +1,40 @@
 import { ObjectId } from "mongodb";
-import { getDB } from "./getDB.js";
+import { getDb } from "./getDB.js";
 import { createBoat } from "../domain/index.js";
 
 export async function findAll() {
-    const db = await getDB();
+    const db = await getDb();
     const booteArray = await db.collection("boote").find({}).toArray();
     return booteArray.map((boot) => createBoat(boot));
+}
+
+export async function findById(bootId) {
+    const db = await getDb();
+    const boot = await db
+        .collection("boote")
+        .findOne({ _id: ObjectId.createFromHexString(bootId) });
+    if (!boot) throw new Error("Boat with this id doesn't exist");
+    return createBoat(boot);
+}
+
+export async function insertOne(newBoat) {
+    const db = await getDb();
+    const { acknowledged, insertedId } = await db
+        .collection("boote")
+        .insertOne(newBoat);
+    if (acknowledged) return createBoat({ ...newBoat, _id: insertedId });
+    else return null;
+}
+
+export async function deleteBoatById(bootId) {
+    const db = await getDb();
+    const boot = await db
+        .collection("boote")
+        .findOne({ _id: ObjectId.createFromHexString(bootId) });
+    if (!boot) throw new Error("Boat with this id does not exist");
+    const { acknowledged } = await db
+        .collection("boote")
+        .deleteOne({ _id: ObjectId.createFromHexString(bootId) });
+    if (!acknowledged) return null;
+    return createBoat(boot);
 }

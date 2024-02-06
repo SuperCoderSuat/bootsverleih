@@ -1,10 +1,10 @@
-export function createBoat({ id, baujahr, seriennummer, material, bootsart }) {
+export function createBoat({ _id, baujahr, seriennummer, material, bootsart }) {
     if (!seriennummer) {
         throw new Error("Seriennummer ist Pflicht");
     }
 
     const boot = {
-        id,
+        _id,
         baujahr,
         seriennummer,
         material,

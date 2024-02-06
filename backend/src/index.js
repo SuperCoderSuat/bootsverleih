@@ -17,6 +17,8 @@ app.use(cors());
 app.use(morgan("dev"));
 
 // routes
-app.get("/", bootRouter.default);
+app.use("/api/v1/boote", bootRouter.default);
+
+app.use("/api/v1/:bootId", bootRouter.default);
 
 app.listen(PORT, () => console.log("Server listening on port", PORT));
