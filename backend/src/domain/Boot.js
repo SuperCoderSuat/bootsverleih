@@ -1,4 +1,11 @@
-export function createBoat({ _id, baujahr, seriennummer, material, bootsart }) {
+export function createBoat({
+    _id,
+    baujahr,
+    seriennummer,
+    material,
+    bootsart,
+    termine,
+}) {
     if (!seriennummer) {
         throw new Error("Seriennummer ist Pflicht");
     }
@@ -9,6 +16,7 @@ export function createBoat({ _id, baujahr, seriennummer, material, bootsart }) {
         seriennummer,
         material,
         bootsart,
+        termine,
     };
     return boot;
 }

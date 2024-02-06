@@ -12,5 +12,6 @@ function asBoatListItem(boot) {
         seriennummer: boot.seriennummer,
         material: boot.material,
         bootsart: boot.bootsart,
+        termine: boot.termine,
     };
 }
