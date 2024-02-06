@@ -16,7 +16,10 @@ const Dashboard = () => {
     getData(); // getData aufrufen
   }, []);
 
-  return <div></div>;
-};
+  return (
+  <div>
+    
+  </div>
+)};
 
 export default Dashboard;
