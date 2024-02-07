@@ -1,0 +1,26 @@
+.content_layout {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .content {
+        display: flex;
+        width: 70%;
+        height: 70%;
+        background-color: #EFF7F6;
+        align-items: center;
+        justify-content: space-evenly;
+        .icons {
+            border: 1px solid black;
+            height: 300px;
+            width: 300px;
+            text-align: center;
+            padding: 1rem;
+            .statisticNumbers {
+                font-family: "roboto_bold", Arial, Helvetica, sans-serif;
+                font-size: 5rem;
+            }
+        }
+    }
+}

@@ -17,11 +17,19 @@ const Dashboard = () => {
   }, []);
 
   return (
-  <section>
-    <div>Reservierungen</div>
-    <div>Verfügbare Boote</div>
-    <div>Boote Gesamt</div>
-  </section>
+    <section className="content_layout">
+      <article className="content">
+        <div className="icons reserv">Reservierungen
+        <div className="statisticNumbers" >1</div>
+        </div>
+        <div className="icons verfueg">Verfügbare Boote
+        <div className="statisticNumbers" >2</div>
+        </div>
+        <div className="icons gesamt">Boote Gesamt
+        <div className="statisticNumbers" >3</div>
+        </div>
+      </article>
+    </section>
 )};
 
 export default Dashboard;
