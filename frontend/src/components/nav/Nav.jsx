@@ -16,9 +16,9 @@ const Nav = () => {
     }
 
     return (
-        <nav>
-            <img onClick={() => linkZuBoote()} src={SchiffIcon} alt="" />
-            <img onClick={() => linkZuReservierungen()} src={KalenderIcon} alt="" />
+        <nav className="navBar">
+            <img className="icon" onClick={() => linkZuBoote()} src={SchiffIcon} alt="" />
+            <img className="icon" onClick={() => linkZuReservierungen()} src={KalenderIcon} alt="" />
         </nav>
     );
 }
