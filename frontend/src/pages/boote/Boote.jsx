@@ -3,8 +3,11 @@ import "./Boote.scss";
 const Boote = () => {
   return (
     <>
-      <div></div>
-      <div></div>
+      <section className="content_layout">
+        <article className="content">
+
+        </article>
+      </section>
     </>
   );
 };
