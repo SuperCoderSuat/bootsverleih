@@ -71,7 +71,7 @@ bootRouter.delete("/:bootId", async function deleteBoatById(req, res) {
     try {
         const bootId = req.params.bootId;
         const result = await BootService.removeBoat(bootId);
-        res.status(201).json({ succes: true, result });
+        res.status(201).json({ success: true, result });
     } catch (err) {
         console.log(err);
         res.status(500).json({

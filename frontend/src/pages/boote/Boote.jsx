@@ -3,9 +3,11 @@ import AddNewBtn from "../../components/buttons/addnewbtn/AddNewBtn";
 import UebersichtBtn from "../../components/buttons/uebersichtbtn/UebersichtBtn";
 import { getAllBoats } from "../../api/fetchBoote.js";
 import "./Boote.scss";
+import { useNavigate } from 'react-router-dom';
 
 const Boote = () => {
   const [boote, setBoote] = useState([]);
+  const navigate = useNavigate()
 
   useEffect(() => {
     const getData = async () => {
@@ -20,6 +22,10 @@ const Boote = () => {
     getData();
   }, []);
   
+  const handleButtonClick = (boot) => {
+    navigate(`/boote/${boot.seriennummer}`)
+  }
+
   return (
     <>
       <section className="content_layout">
