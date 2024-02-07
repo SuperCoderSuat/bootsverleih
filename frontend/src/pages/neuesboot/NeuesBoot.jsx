@@ -22,16 +22,16 @@ const NeuesBoot = () => {
     try {
       const response = await addNewBoat(boatDetails);
       console.log('Neues Boot erfolgreich erstellt:', response);
-      setNotification('Boot erfolgreich angelegt.'); // Benachrichtigung setzen
+      setNotification('Boot erfolgreich angelegt.');
       setBoatDetails({
         baujahr: '',
         seriennummer: '',
         material: '',
         bootsart: '',
-      }); // Eingabefelder leeren
+      });
     } catch (error) {
       console.error('Fehler beim Anlegen des neuen Bootes:', error);
-      setNotification('Fehler beim Anlegen des Boots.'); // Benachrichtigung setzen
+      setNotification('Fehler beim Anlegen des Boots.');
     }
   };
 
@@ -41,20 +41,20 @@ const NeuesBoot = () => {
         <h2>Neues Boot anlegen</h2>
         <form onSubmit={handleSubmit}>
           <div className="form_layout">
-              <input className="form_input" type="text" name="baujahr" value={boatDetails.baujahr} onChange={handleChange} placeholder="Baujahr"/>
+              <input className="form_input" type="text" name="baujahr" value={boatDetails.baujahr} onChange={handleChange} placeholder="Baujahr" required />
           </div>
           <div className="form_layout">
-              <input className="form_input" type="text" name="seriennummer" value={boatDetails.seriennummer} onChange={handleChange} placeholder="Seriennummer"/>
+              <input className="form_input" type="text" name="seriennummer" value={boatDetails.seriennummer} onChange={handleChange} placeholder="Seriennummer" required />
           </div>
           <div className="form_layout">
-              <input className="form_input" type="text" name="material" value={boatDetails.material} onChange={handleChange} placeholder="Material"/>
+              <input className="form_input" type="text" name="material" value={boatDetails.material} onChange={handleChange} placeholder="Material" required />
           </div>
           <div className="form_layout">
-              <input className="form_input" type="text" name="bootsart" value={boatDetails.bootsart} onChange={handleChange} placeholder="Bootsart"/>
+              <input className="form_input" type="text" name="bootsart" value={boatDetails.bootsart} onChange={handleChange} placeholder="Bootsart" required />
           </div>
           <button className="form_submitbtn" type="submit">Neues Boot anlegen</button>
         </form>
-        {notification && <p>{notification}</p>} {/* Benachrichtigung anzeigen */}
+        {notification && <p>{notification}</p>}
       </article>
     </section>
   );
