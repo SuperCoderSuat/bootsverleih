@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./Dashboard.scss";
-import { getAllBoats } from "../../api/fetchBoote";
+import { getAllBoats } from "../../api/fetchBoote.js";
 
 const Dashboard = () => {
 
