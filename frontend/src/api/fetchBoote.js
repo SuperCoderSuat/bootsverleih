@@ -16,7 +16,7 @@ export async function getAllBoats() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(bootdetail),
+      body: JSON.stringify(boatDetails),
     });
     return response.json();
   }
