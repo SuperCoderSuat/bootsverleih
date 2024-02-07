@@ -8,13 +8,13 @@ export async function getAllBoats() {
     return response.json();
   }
   
-  export async function addNewBoat(boatDetails) {
+  export async function addNewBoat(bootdetail) {
     const response = await fetch('/api/boote', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(boatDetails),
+      body: JSON.stringify(bootdetail),
     });
     return response.json();
   }
