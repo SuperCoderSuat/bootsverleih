@@ -1,6 +1,7 @@
 import "./NeuesBoot.scss";
 import { addNewBoat } from "../../api/fetchBoote";
 import { useState } from "react";
+import BackBtn from "../../components/buttons/backbtn/BackBtn";
 
 const NeuesBoot = () => {
   const [boatDetails, setBoatDetails] = useState({
@@ -55,6 +56,7 @@ const NeuesBoot = () => {
           <button className="form_submitbtn" type="submit">Neues Boot anlegen</button>
         </form>
         {notification && <p>{notification}</p>}
+        <BackBtn value="zurück" url="/boote"/>
       </article>
     </section>
   );

@@ -8,7 +8,8 @@ const Dashboard = () => {
   const [numberReservierung, setNumberReservierung] = useState("")
   const [numberVerfuegbar, setNumberVerfuegbar] = useState("")
   const [numberGesamt, setnumberGesamt] = useState("")
-
+  let ausgebuchteBoote = 0 //wird als counter genutzt und dann von Gesamtzahl subtrahiert
+  const uniqueKennungen = new Set(); //zur Erkennung von gruppierten Reservierungen
 
   useEffect(() => {
     const getData = async () => {
@@ -22,16 +23,30 @@ const Dashboard = () => {
         }
         checkNumberGesamt()
 
+        //setting verfügbare Boote value:
+        const checkNumberVerfuegbar = () => {
+          fetchData.forEach((boot) => {
+            const verfuegbareTermine = boot.termine.filter((termine) => termine.gebucht === false);
+            if (verfuegbareTermine.length === 0) {
+              ausgebuchteBoote++
+            }
+            setNumberVerfuegbar(numberGesamt-ausgebuchteBoote)
+          });
+        };
+        checkNumberVerfuegbar();
 
-        // const checkNumberVerfuegbar = () => {
-        //   const verfuegbareBoote = fetchData.filter((boot) =>
-        //     boot.termine.every((item) =>
-        //       Object.values(item).every((value) => value === true)
-        //     )
-        //   );
-        //   setNumberVerfuegbar(verfuegbareBoote.length);
-        // };
-        // checkNumberVerfuegbar();
+        //setting Anzahl Reservierungen:
+        const checkNumberReservierungen = () => {
+          fetchData.forEach((boot) => {
+            const kennungenEntitäten = boot.termine.filter((Kennungen) => Kennungen.Kennung !== "")
+            kennungenEntitäten.forEach((Kennung) => {
+              uniqueKennungen.add(Kennung.Kennung)
+              setNumberReservierung(uniqueKennungen.size);
+            })
+          })
+        }
+        checkNumberReservierungen()
+
       } catch (error) {
         console.log('Fehler beim Abrufen der Daten:', error);
       }

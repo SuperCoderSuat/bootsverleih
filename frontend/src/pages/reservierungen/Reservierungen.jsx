@@ -3,9 +3,13 @@ import AddNewBtn from "../../components/buttons/addnewbtn/AddNewBtn";
 import { getAllBoats } from "../../api/fetchBoote.js";
 import "./Reservierungen.scss";
 import UebersichtReservierungenBtn from '../../components/buttons/uebersichtreservierungenbtn/UebersichtReservierungenBtn';
+import { useNavigate } from 'react-router-dom';
+
 
 const Reservierungen = () => {
   const [reservierungen, setReservierungen] = useState([]);
+  const navigate = useNavigate()
+
 
   useEffect(() => {
     const getData = async () => {
@@ -19,13 +23,17 @@ const Reservierungen = () => {
     };
     getData();
   }, []);
+
+  const handleButtonClick = (boot) => {
+    navigate(`/reservierungen/${boot.seriennummer}`)
+  }
   
   return (
     <>
       <section className="content_layout">
         <article className="boot_content">
           <h2>Übersicht Reservierungen</h2>
-          <AddNewBtn/>
+          <AddNewBtn url="/reservierungen/neuereservierung"/>
           {reservierungen.map((reservierung) => (
             <button key={reservierung.id} onClick={() => handleButtonClick(reservierung)}>
               <UebersichtReservierungenBtn

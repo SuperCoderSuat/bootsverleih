@@ -31,7 +31,7 @@ const Boote = () => {
       <section className="content_layout">
         <article className="boot_content">
           <h2>Übersicht Boote</h2>
-          <AddNewBtn/>
+          <AddNewBtn url="/boote/neuesboot"/>
           {boote.map((boot) => (
             <button key={boot.id} onClick={() => handleButtonClick(boot)}>
               <UebersichtBtn

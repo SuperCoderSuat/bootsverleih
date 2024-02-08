@@ -27,11 +27,10 @@ const BootDetail = () => {
     <>
       <section className="content_layout">
         <article className="bootDetail_content">
-          <h2>Details Boote</h2>
-          <p>Boot Nr.: {identifiedBoat?.seriennummer}</p>
-          <p>Baujahr: {identifiedBoat?.baujahr}</p>
-          <p>Bootsart: {identifiedBoat?.bootsart}</p>
-          <p>Material: {identifiedBoat?.material}</p>
+          <h2>Details zum {identifiedBoat?.bootsart} Nr.{identifiedBoat?.seriennummer}</h2>
+          <p>Dieses einzigartige Wasserfahrzeug, erbaut im Jahr {identifiedBoat?.baujahr}, verkörpert die perfekte Symbiose aus Eleganz und Kraft.</p>
+          <p>Die kunstvolle Verarbeitung aus {identifiedBoat?.material} verleiht diesem Boot nicht nur eine unvergleichliche Stabilität, sondern auch einen zeitlosen Charme. Ob aus robustem Holz, glänzendem Metall oder gar geheimnisvollen Seelen – jedes Boot erzählt seine eigene Geschichte.</p>
+          <p>Erleben Sie die Freiheit des Wassers und lassen Sie sich von der einzigartigen Kombination aus modernem Design und traditioneller Handwerkskunst begeistern.</p>
           <BackBtn value= "zurück" url="/boote"/>
           <RemoveBtn value= "löschen" id={identifiedBoat?.id}/>
         </article>
